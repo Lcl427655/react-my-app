@@ -118,6 +118,8 @@ module.exports = function(webpackEnv) {
       },
     ].filter(Boolean);
     if (preProcessor) {
+      //参考链接
+      //https://blog.csdn.net/roamingcode/article/details/85315572
       loaders.push(
         {
           loader: require.resolve('resolve-url-loader'),
@@ -129,6 +131,11 @@ module.exports = function(webpackEnv) {
           loader: require.resolve(preProcessor),
           options: {
             sourceMap: true,
+            modifyVars: { 
+              'primary-color': '#FF33CC',//主题色
+              'link-color': '#0000FF', // 链接色
+            },
+            javascriptEnabled: true
           },
         }
       );
@@ -331,7 +338,6 @@ module.exports = function(webpackEnv) {
                 formatter: require.resolve('react-dev-utils/eslintFormatter'),
                 eslintPath: require.resolve('eslint'),
                 resolvePluginsRelativeTo: __dirname,
-                
               },
               loader: require.resolve('eslint-loader'),
             },
@@ -376,6 +382,7 @@ module.exports = function(webpackEnv) {
                         },
                       },
                     },
+
                   ],
                 ],
                 // This is a feature of `babel-loader` for webpack (not Babel itself).
@@ -480,21 +487,20 @@ module.exports = function(webpackEnv) {
             {
               test: lessRegex,
               exclude: lessModuleRegex,
-              use: getStyleLoaders({
-                importLoaders: 2,
-                sourceMap: isEnvProduction && shouldUseSourceMap,
-              }),
-              sideEffects: true,
+              use: getStyleLoaders({ importLoaders: 2 }, 'less-loader'), // 注意第二个参数
             },
             {
               test: lessModuleRegex,
-              use: getStyleLoaders({
-                importLoaders: 2,
-                modules: true,
-                getLocalIdent: getCSSModuleLocalIdent,
-                sourceMap: isEnvProduction && shouldUseSourceMap,
-              }),
+              use: getStyleLoaders(
+                {
+                  importLoaders: 2,
+                  modules: true,
+                  getLocalIdent: getCSSModuleLocalIdent,
+                },
+                'less-loader' // 注意第二个参数
+              ),
             },
+
             // "file" loader makes sure those assets get served by WebpackDevServer.
             // When you `import` an asset, you get its (virtual) filename.
             // In production, they would get copied to the `build` folder.
