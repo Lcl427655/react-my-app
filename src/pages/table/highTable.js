@@ -18,7 +18,7 @@ export default class BasicTable extends React.Component {
     request = () => {
         let _this = this;
         axios.ajax({
-            url: '/table/high/list',
+            url: '/table/list',
             data: {
                 params: {
                     page: this.params.page

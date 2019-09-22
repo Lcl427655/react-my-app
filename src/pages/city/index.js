@@ -21,14 +21,14 @@ export default class City extends React.Component{
     requestList = ()=>{
         let _this = this;
         axios.ajax({
-            url: '/open_city',
+            url: '/city/list',
             data:{
                 params:{
                     page:this.params.page
                 }
             }
         }).then((res)=>{
-            let list = res.result.item_list.map((item, index) => {
+            let list = res.result.list.map((item, index) => {
                 item.key = index;
                 return item;
             });
@@ -93,18 +93,18 @@ export default class City extends React.Component{
             }, {
                 title: '城市管理员',
                 dataIndex: 'city_admins',
-                render(arr){
-                    return arr.map((item)=>{
-                        return item.user_name;
-                    }).join(',');
-                }
+                // render(arr){
+                //     return arr.map((item)=>{
+                //         return item.user_name;
+                //     }).join(',');
+                // }
             }, {
                 title: '城市开通时间',
                 dataIndex: 'open_time'
             }, {
                 title: '操作时间',
                 dataIndex: 'update_time',
-                render: Utils.formateDate
+                //render: Utils.formateDate
             }, {
                 title: '操作人',
                 dataIndex: 'sys_user_name'

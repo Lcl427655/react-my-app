@@ -22,7 +22,7 @@ export default class Axios {
             loading = document.getElementById('ajaxLoading');
             loading.style.display = 'block';
         }
-        let baseApi = 'https://www.easy-mock.com/mock/5a7278e28d0c633b9c4adbd7/api';
+        let baseApi = 'http://localhost:8080/api';
         return new Promise((resolve,reject)=>{
             axios({
                 url:options.url,
@@ -35,7 +35,7 @@ export default class Axios {
                     loading = document.getElementById('ajaxLoading');
                     loading.style.display = 'none';
                 }
-                if (response.status === '200'){
+                if (response.status == '200'){
                     let res = response.data;
                     if (res.code === '0'){
                         resolve(res);
@@ -48,6 +48,11 @@ export default class Axios {
                 }else{
                     reject(response.data);
                 }
+            }).catch((e)=>{
+                Modal.info({
+                    title:"提示",
+                    content:"失败"
+                })
             })
         });
     }

@@ -65,7 +65,6 @@ export default class BasicTable extends React.Component{
                 }
             }
         }).then((res)=>{
-            console.log(res)
             if(res.code == 0){
                 res.result.list.map((item, index) => {
                     item.key = index;
