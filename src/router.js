@@ -19,12 +19,14 @@ import HighTable from './pages/table/highTable'
 import Rich from './pages/rich'
 import City from './pages/city/index'
 import Order from './pages/order/index'
+import OrderDetail from './pages/order/detail'
 import BikeMap from './pages/map/bikeMap'
 import User from './pages/user/index'
 import Bar from './pages/echarts/bar/index'
 import Pie from './pages/echarts/pie/index'
 import Line from './pages/echarts/line/index'
 import Permission from './pages/permission'
+import Common from './common'
 export default class IRouter extends React.Component{
     render(){
         return(
@@ -57,6 +59,12 @@ export default class IRouter extends React.Component{
                             <Redirect to="/admin/home" />
                         </Admin>
                     }></Route>
+                    <Route path="/common" render={() =>
+                        <Common>
+                            <Route path="/common/order/detail/:orderId" component={OrderDetail} />
+                        </Common>
+                    }
+                    />
                 </App>
             </HashRouter>
         );

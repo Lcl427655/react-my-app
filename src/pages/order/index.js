@@ -52,7 +52,7 @@ export default class Order extends React.Component{
                 params: this.params
             }
         }).then((res)=>{
-            let list = res.result.item_list.map((item, index) => {
+            let list = res.result.list.map((item, index) => {
                 item.key = index;
                 return item;
             });
@@ -79,7 +79,7 @@ export default class Order extends React.Component{
             url:'/order/ebike_info',
             data:{
                 params:{
-                    orderId: item.id
+                    orderId: item.order_sn
                 }
             }
         }).then((res)=>{
@@ -129,7 +129,7 @@ export default class Order extends React.Component{
             })
             return;
         }
-        window.open(`/#/common/order/detail/${item.id}`,'_blank')
+        window.open(`/#/common/order/detail/${item.order_sn}`,'_blank')
     }
     render(){
         const columns = [
