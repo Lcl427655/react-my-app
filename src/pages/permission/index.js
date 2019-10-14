@@ -11,7 +11,7 @@ export default class Order extends React.Component{
 
     state={}
 
-    componentWillMount(){
+    UNSAFE_componentWillMount(){
         this.requestList();   
     }
 

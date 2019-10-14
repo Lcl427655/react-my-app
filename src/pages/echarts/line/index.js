@@ -15,7 +15,7 @@ export default class Line extends React.Component {
 
     state = {}
 
-    componentWillMount(){
+    UNSAFE_componentWillMount(){
         echarts.registerTheme('Imooc',echartTheme);
     }
 

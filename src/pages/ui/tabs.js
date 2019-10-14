@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Button, Tabs, message, Icon } from 'antd'
+import { Card, Tabs, message, Icon } from 'antd'
 import './ui.less'
 const TabPane = Tabs.TabPane;
 export default class Buttons extends React.Component {
@@ -9,7 +9,7 @@ export default class Buttons extends React.Component {
         message.info("Hi,您选择了页签："+key)
     }
 
-    componentWillMount(){
+    UNSAFE_componentWillMount(){
         const panes = [
             {
                 title:'Tab 1',
