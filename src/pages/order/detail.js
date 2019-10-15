@@ -33,7 +33,7 @@ export default class Order extends React.Component {
 
     renderMap = (result)=>{
         this.map = new window.BMap.Map('orderDetailMap');
-        // this.map.centerAndZoom('北京',11);
+        this.map.centerAndZoom('北京',11);
         // 添加地图控件
         this.addMapControl();
         // 调用路线图绘制方法

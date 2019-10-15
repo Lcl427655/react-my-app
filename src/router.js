@@ -51,7 +51,7 @@ export default class IRouter extends React.Component{
                             <Route path="/admin/city" component={City} />
                             <Route path="/admin/order" component={Order} />
                             <Route path='/admin/bikeMap' component={BikeMap} />
-                            <Route path='/admin/admin/user' component={User} />
+                            <Route path='/admin/user' component={User} />
                             <Route path="/admin/charts/bar" component={Bar} />
                             <Route path="/admin/admin/charts/pie" component={Pie} />
                             <Route path="/admin/charts/line" component={Line} />

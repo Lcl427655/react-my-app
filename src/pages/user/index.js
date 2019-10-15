@@ -19,7 +19,7 @@ export default class User extends React.Component{
 
     requestList = ()=>{
         axios.ajax({
-            url:'/table/list1',
+            url:'/table/list',
             data:{
                 params:{
                     page:this.params.page

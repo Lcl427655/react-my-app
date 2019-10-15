@@ -24,7 +24,8 @@ export default class Order extends React.Component{
             list: [{ id: '0', name: '全部' }, { id: '1', name: '北京' }, { id: '2', name: '天津' }, { id: '3', name: '上海' }]
         },
         {
-            type: '时间查询'
+            type: '时间查询',
+            field:'time',
         },
         {
             type: 'SELECT',
@@ -45,25 +46,26 @@ export default class Order extends React.Component{
         this.requestList();
     }
     requestList = ()=>{
-        let _this = this;
-        axios.ajax({
-            url:'/order/list',
-            data:{
-                params: this.params
-            }
-        }).then((res)=>{
-            let list = res.result.list.map((item, index) => {
-                item.key = index;
-                return item;
-            });
-            this.setState({
-                list,
-                pagination: Utils.pagination(res, (current) => {
-                    _this.params.page = current;
-                    _this.requestList();
-                })
-            })
-        })
+        axios.requestList(this,'/order/list',this.params)
+        // let _this = this;
+        // axios.ajax({
+        //     url:'/order/list',
+        //     data:{
+        //         params: this.params
+        //     }
+        // }).then((res)=>{
+        //     let list = res.result.list.map((item, index) => {
+        //         item.key = index;
+        //         return item;
+        //     });
+        //     this.setState({
+        //         list,
+        //         pagination: Utils.pagination(res, (current) => {
+        //             _this.params.page = current;
+        //             _this.requestList();
+        //         })
+        //     })
+        // })
     }
     // 订单结束确认
     handleConfirm = ()=>{
